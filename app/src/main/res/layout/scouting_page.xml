@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.frcscoutingapp2017.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="Scoring Mechanism"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
+        <CheckBox
+            android:text="High Goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="25dp"
+            android:id="@+id/checkBox18" />
+
+        <CheckBox
+            android:text="Low Goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox19"
+            android:layout_below="@+id/checkBox18"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:text="Gears"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox20"
+            android:layout_below="@+id/checkBox19"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:text="Rope Climb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox15"
+            android:layout_below="@+id/checkBox20"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Autonomous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="145dp"
+            android:id="@+id/textView7" />
+
+        <CheckBox
+            android:text="Left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="158dp"
+            android:id="@+id/checkBox21" />
+
+        <CheckBox
+            android:text="Right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox23"
+            android:layout_alignBaseline="@+id/checkBox22"
+            android:layout_alignBottom="@+id/checkBox22"
+            android:layout_toEndOf="@+id/checkBox22"
+            android:layout_marginStart="41dp" />
+
+        <CheckBox
+            android:text="Middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox22"
+            android:layout_alignBaseline="@+id/checkBox21"
+            android:layout_alignBottom="@+id/checkBox21"
+            android:layout_toEndOf="@+id/checkBox15" />
+
+        <CheckBox
+            android:text="High goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="184dp"
+            android:id="@+id/checkBox24" />
+
+        <CheckBox
+            android:text="Low Goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox25"
+            android:layout_alignBaseline="@+id/checkBox24"
+            android:layout_alignBottom="@+id/checkBox24"
+            android:layout_alignStart="@+id/checkBox22" />
+
+        <CheckBox
+            android:text="Cross Line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox26"
+            android:layout_alignBaseline="@+id/checkBox25"
+            android:layout_alignBottom="@+id/checkBox25"
+            android:layout_alignStart="@+id/checkBox23" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText3"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/checkBox18"
+            android:layout_below="@+id/textView6" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:layout_alignBottom="@+id/checkBox19"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText5"
+            android:layout_alignBottom="@+id/checkBox20"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:layout_alignBottom="@+id/checkBox15"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</RelativeLayout>
