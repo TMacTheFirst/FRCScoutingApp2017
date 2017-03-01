@@ -1,6 +1,7 @@
 package com.example.frcscoutingapp2017;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,16 @@ public class TeamAdapter extends ArrayAdapter<TeamRating>
             // Populate the data into the template view using the data object
             teamName.setText(team.teamName);
             teamNumber.setText(team.teamNumber + "");
+            if(!team.rating.equals("No Rating"))
+            {
+                if(team.rating.equals("Green"))
+                    convertView.setBackgroundColor(Color.GREEN);
+                else if(team.rating.equals("Yellow"))
+                    convertView.setBackgroundColor(Color.YELLOW);
+                else if(team.rating.equals("Red"))
+                    convertView.setBackgroundColor(Color.RED);
+            }
+
         }
         // Return the completed view to render on screen
         return convertView;

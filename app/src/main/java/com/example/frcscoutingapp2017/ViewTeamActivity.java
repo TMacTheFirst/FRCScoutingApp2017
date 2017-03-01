@@ -8,27 +8,31 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class RateTeamActivity extends AppCompatActivity
+public class ViewTeamActivity extends AppCompatActivity
 {
     Spinner spinner;
     Button saveTeamButton;
     EditText teamNumberEditText;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //The value of myRef is the head of the table.
-    //The .child(id) is a way to make arrays
     DatabaseReference myRef = database.getReference("2890");
-    DatabaseReference myRef2 = database.getReference("Test");
+    static TeamRating team;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_scouting_page);
+
+        final int teamNumber = (int) getIntent().getExtras().get("teamNumber");
+        final TeamRating team;
 
         teamNumberEditText = (EditText) findViewById(R.id.teamNumberEditText);
         saveTeamButton = (Button) findViewById(R.id.saveTeamButton);
@@ -41,6 +45,36 @@ public class RateTeamActivity extends AppCompatActivity
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
         spinner.setAdapter(spinnerArrayAdapter);
+
+
+        //READ IN TEAM DATA AND FILL IN UI
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+
+                TeamRating teamRating = null;
+                for (DataSnapshot teamSnapshot: dataSnapshot.getChildren()) {
+                    TeamRating temp = teamSnapshot.getValue(TeamRating.class);
+                    if (temp.teamNumber == teamNumber)
+                    {
+                        teamRating = teamSnapshot.getValue(TeamRating.class);
+                    }
+                }
+                if(teamRating != null)
+                {
+                    teamNumberEditText.setText(teamRating.teamNumber+"");
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
 
         saveTeamButton.setOnClickListener(new View.OnClickListener()
         {

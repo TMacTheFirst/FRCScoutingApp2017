@@ -8,6 +8,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class ListViewActivity extends AppCompatActivity
@@ -16,6 +22,8 @@ public class ListViewActivity extends AppCompatActivity
     public static TeamAdapter adapter;
     ListView list;
     Button addTeamButton;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("2890");
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,24 +33,40 @@ public class ListViewActivity extends AppCompatActivity
 
         teams = new ArrayList<TeamRating>();
         list = (ListView) findViewById(R.id.list);
-        adapter = new TeamAdapter(this, teams);
-        adapter.notifyDataSetChanged();
-        adapter.setNotifyOnChange(true);
-        list.setAdapter(adapter);
+        addTeamButton = (Button) findViewById(R.id.addTeam);
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+
+                teams.clear();
+                for (DataSnapshot teamSnapshot: dataSnapshot.getChildren()) {
+                    TeamRating teamRating = teamSnapshot.getValue(TeamRating.class);
+                    teams.add(teamRating);
+                }
+                adapter = new TeamAdapter(getApplicationContext(), teams);
+                adapter.notifyDataSetChanged();
+                adapter.setNotifyOnChange(true);
+                list.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent viewIntent = new Intent(view.getContext(), RateTeamActivity.class);
-                viewIntent.putExtra("name", teams.get(position).teamName);
-                viewIntent.putExtra("number", teams.get(position).teamNumber);
-                viewIntent.putExtra("notes", teams.get(position).notes);
-                viewIntent.putExtra("index", position);
+                Intent viewIntent = new Intent(view.getContext(), ViewTeamActivity.class);
+                viewIntent.putExtra("teamNumber", teams.get(position).teamNumber);
                 startActivity(viewIntent);
             }
         });
 
-        addTeamButton = (Button) findViewById(R.id.addTeam);
         addTeamButton.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
@@ -56,7 +80,6 @@ public class ListViewActivity extends AppCompatActivity
     public void addTeam()
     {
         Intent intent = new Intent(this, RateTeamActivity.class);
-        //           intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
 }
