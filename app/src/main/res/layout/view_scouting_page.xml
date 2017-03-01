@@ -46,25 +46,25 @@
                 android:text="High Goal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox2" />
+                android:id="@+id/highGoal" />
 
             <CheckBox
                 android:text="Low Goal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox6" />
+                android:id="@+id/lowGoal" />
 
             <CheckBox
                 android:text="Gears"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox4" />
+                android:id="@+id/gears" />
 
             <CheckBox
                 android:text="Rope Lift"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox3" />
+                android:id="@+id/ropeLift" />
 
             <TextView
                 android:text="Autonomous"
@@ -76,37 +76,37 @@
                 android:text="Left Gear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox9" />
+                android:id="@+id/leftGear" />
 
             <CheckBox
                 android:text="Middle Gear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox13" />
+                android:id="@+id/middleGear" />
 
             <CheckBox
                 android:text="Right Gear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox12" />
+                android:id="@+id/rightGear" />
 
             <CheckBox
                 android:text="High Goal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox11" />
+                android:id="@+id/highGoalAuto" />
 
             <CheckBox
                 android:text="Low Goal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox10" />
+                android:id="@+id/lowGoalAuto" />
 
             <CheckBox
                 android:text="Cross Line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox14" />
+                android:id="@+id/crossLine" />
 
             <Spinner
                 android:layout_width="match_parent"
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/editText8"
+                android:id="@+id/notesEditText"
                 android:hint="Notes" />
 
             <Button

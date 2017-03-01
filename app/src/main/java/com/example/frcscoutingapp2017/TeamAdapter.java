@@ -2,6 +2,7 @@ package com.example.frcscoutingapp2017;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,9 @@ public class TeamAdapter extends ArrayAdapter<TeamRating>
             // Lookup view for data population
             TextView teamName = (TextView) convertView.findViewById(R.id.teamName);
             TextView teamNumber = (TextView) convertView.findViewById(R.id.teamNumber);
+
+            teamName.setTextSize(TypedValue.COMPLEX_UNIT_SP,24);
+            teamNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP,24);
             // Populate the data into the template view using the data object
             teamName.setText(team.teamName);
             teamNumber.setText(team.teamNumber + "");
