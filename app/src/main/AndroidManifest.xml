@@ -15,6 +15,20 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ListViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ListViewActivity"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".RateTeamActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.RateTeamActivity"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -15,7 +15,7 @@
         android:text="Register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button3"
+        android:id="@+id/registerButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
@@ -24,8 +24,8 @@
         android:text="Sign in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:layout_above="@+id/button3"
+        android:id="@+id/signInButton"
+        android:layout_above="@+id/registerButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
@@ -34,9 +34,9 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText10"
+        android:id="@+id/teamNumber"
         android:hint="Team Number"
-        android:layout_above="@+id/button2"
+        android:layout_above="@+id/signInButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
@@ -45,9 +45,9 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText9"
+        android:id="@+id/password"
         android:hint="Password"
-        android:layout_above="@+id/editText10"
+        android:layout_above="@+id/teamNumber"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
@@ -56,9 +56,8 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/editText7"
+        android:id="@+id/email"
         android:hint="Email"
-        android:layout_above="@+id/editText9"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/password"
+        android:layout_alignParentStart="true"/>
 </RelativeLayout>
