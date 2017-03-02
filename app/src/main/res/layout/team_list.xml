@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.frcscoutingapp2017.MainActivity">
+    tools:context="com.example.frcscoutingapp2017.MainActivity"
+    android:background="#B78A47">
 
     <Button
         android:text="Add Team"
@@ -20,5 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/addTeam"
-        android:id="@+id/list"/>
+        android:id="@+id/list"
+        android:background="#B78A47"/>
 </RelativeLayout>

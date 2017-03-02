@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,18 +23,42 @@ public class MainActivity extends AppCompatActivity
     Spinner spinner;
     EditText emailEditText, passwordEditText, teamNumberEditText;
     Button signInButton, registerButton;
-    private FirebaseAuth mAuth;
+    public static FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("Users");
+    DatabaseReference myRef;
     public static int id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        database.getInstance().setPersistenceEnabled(true);
+        myRef = database.getReference("Users");
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Intent intent = new Intent(getApplicationContext(), ListViewActivity.class);
+                    //get team number
+                    int teamNumber = 0;
+                    intent.putExtra("Team Number", teamNumber);
+
+                    startActivity(intent);
+
+                } else {
+                    // User is signed out
+                }
+                // ...
+            }
+        };
+
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
 
 
         emailEditText = (EditText) findViewById(R.id.email);
@@ -129,4 +154,17 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "Fill in required fields.", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
 }

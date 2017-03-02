@@ -82,4 +82,11 @@ public class ListViewActivity extends AppCompatActivity
         Intent intent = new Intent(this, RateTeamActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        MainActivity.mAuth.signOut();
+        finish();
+        return;
+    }
 }

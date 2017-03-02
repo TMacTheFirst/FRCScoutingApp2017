@@ -4,7 +4,8 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:id="@+id/linLay">
+              android:id="@+id/linLay"
+              android:background="#B78A47">
     <TextView
         android:id="@+id/teamName"
         android:layout_width="wrap_content"
