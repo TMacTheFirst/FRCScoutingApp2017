@@ -108,8 +108,23 @@ public class MainActivity extends AppCompatActivity
 
                                 //get team number
                                 int teamNumber = 0;
-                                intent.putExtra("Team Number", teamNumber);
 
+                     /*           myRef.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError error) {
+                                        // Failed to read value
+                                    }
+                                });*/
+
+
+
+
+                                intent.putExtra("Team Number", teamNumber);
                                 startActivity(intent);
                             }
                         }
@@ -142,7 +157,13 @@ public class MainActivity extends AppCompatActivity
                             {
                                 //save user's team and launch
                                 //Can't use email as identifier because of special characters
-                                myRef.child(email).setValue(teamNumber);
+                                String encodedEmail = email.replace('.',',');
+                                encodedEmail = encodedEmail.replace('$',',');
+                                encodedEmail = encodedEmail.replace('[',',');
+                                encodedEmail = encodedEmail.replace(']',',');
+                                encodedEmail = encodedEmail.replace('/',',');
+                                encodedEmail = encodedEmail.replace('#',',');
+                                myRef.child(encodedEmail).setValue(teamNumber);
                                 Intent intent = new Intent(getApplicationContext(), ListViewActivity.class);
                                 intent.putExtra("Team Number", teamNumber);
                                 startActivity(intent);
